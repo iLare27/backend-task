@@ -1,6 +1,6 @@
 import Fastify from 'fastify';
 import fastifyPostgres from '@fastify/postgres';
-import fastifyCaching from '@fastify/caching';
+import fastifyRedis from '@fastify/redis';
 import * as dotenv from 'dotenv';
 import userRoutes from './routes/users.route';
 import itemRoutes from './routes/items.route';
@@ -19,22 +19,15 @@ fastify.register(fastifyPostgres, {
     port: parseInt(process.env.DB_PORT || '5432'),
 });
 
-fastify.register(fastifyCaching, {
-    privacy: 'public',
-    expiresIn: 3600 // Кешируем на 1 час
-});
-
-fastify.get('/api/users', function (req, reply) {
-    fastify.pg.query('SELECT * FROM users', function onResult(err, result) {
-        reply.send(err || result);
-    });
+fastify.register(fastifyRedis, {
+    url: process.env.REDIS_URL,
 });
 
 fastify.register(userRoutes, { prefix: '/api' });
 fastify.register(itemRoutes, { prefix: '/api' });
 
 try {
-    fastify.listen({ port: 3002 }, (err, address) => {
+    fastify.listen({ port: 3000 }, (err, address) => {
         if (err) {
             fastify.log.error(err);
             process.exit(1);

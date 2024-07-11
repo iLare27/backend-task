@@ -10,6 +10,6 @@ export interface Item {
     quantity: number;
     created_at: number;
     updated_at: number;
-    min_tradable_price?: number;
-    min_non_tradable_price?: number;
+    min_tradable_price?: number | null;
+    min_non_tradable_price?: number | null;
 }

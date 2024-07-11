@@ -2,9 +2,6 @@ import { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify';
 import { IParams, BalanceRequest } from '../interfaces/user.interface';
 
 export default async function (fastify: FastifyInstance) {
-    /**
-     * POST - Списание баланса пользователя
-     */
     fastify.post(
         '/users/:id/balance',
         async function (

@@ -13,6 +13,7 @@
   "dependencies": {
     "@fastify/caching": "^8.4.0",
     "@fastify/postgres": "^5.2.2",
+    "@fastify/redis": "^6.2.0",
     "@types/pg": "^8.11.6",
     "axios": "^1.7.2",
     "dotenv": "^16.4.5",
