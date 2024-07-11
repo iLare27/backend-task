@@ -5,14 +5,14 @@
 1. Клонируйте репозиторий
 2. Установите зависимости: `npm install`
 3. Создайте файл `.env` и добавьте следующие переменные:
-
+```
    DB_USER=your_db_user
    DB_HOST=your_db_host
    DB_NAME=your_db_name
    DB_PASSWORD=your_db_password
    DB_PORT=your_db_port
    REDIS_URL=your_redis_url
-
+```
 
 ## Запуск
 ```bash
